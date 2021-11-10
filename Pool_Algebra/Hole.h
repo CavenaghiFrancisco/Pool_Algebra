@@ -1,14 +1,14 @@
 #pragma once
 #include "raylib.h"
 
-class Ball {
+class Hole {
 private:
 	int radius;
 	Color color;
 	Vector2 position;
 public:
-	Ball(int radius, Color color, Vector2 position);
-	~Ball();
+	Hole(int radius, Color color, Vector2 position);
+	~Hole();
 	void Draw();
 	void Update();
 };

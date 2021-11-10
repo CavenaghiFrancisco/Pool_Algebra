@@ -150,14 +150,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Ball.cpp" />
-    <ClCompile Include="Holes.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Hole.cpp" />
     <ClCompile Include="Pool_Algebra.cpp" />
     <ClCompile Include="Table.cpp" />
     <ClCompile Include="WhiteBall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
-    <ClInclude Include="Holes.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Hole.h" />
     <ClInclude Include="Table.h" />
     <ClInclude Include="WhiteBall.h" />
   </ItemGroup>

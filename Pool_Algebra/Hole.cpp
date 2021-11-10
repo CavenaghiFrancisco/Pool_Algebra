@@ -1,17 +1,17 @@
-#include "Ball.h"
+#include "Hole.h"
 
-Ball::Ball(int radius, Color color, Vector2 position) {
+Hole::Hole(int radius, Color color, Vector2 position) {
 	this->radius = radius;
 	this->color = color;
 	this->position = position;
 }
 
-Ball::~Ball() {
+Hole::~Hole() {
 }
 
-void Ball::Draw() {
+void Hole::Draw() {
 	DrawCircle(position.x, position.y, radius, color);
 }
 
-void Ball::Update() {
+void Hole::Update() {
 }
