@@ -11,7 +11,7 @@ using namespace std;
 class Game {
 private:
 	vector<Hole*> holes;
-	WhiteBall* player;
+	WhiteBall* whiteBall;
 public:
 	const int screenWidth = 1366;
 	const int screenHeight = 768;

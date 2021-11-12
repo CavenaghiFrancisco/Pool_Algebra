@@ -9,7 +9,7 @@ Game::Game() {
 	holes.push_back(new Hole(60, BLACK, { (float)screenWidth-10,(float)screenHeight-10 }));
 	holes.push_back(new Hole(60, BLACK, { (float)screenWidth/2,(float)screenHeight }));
 	holes.push_back(new Hole(60, BLACK, { (float)screenWidth / 2,0 }));
-	player = new WhiteBall(20, WHITE, { (float)screenWidth * 3 / 4, (float)screenHeight / 2 },0);
+	whiteBall = new WhiteBall(20, WHITE, { (float)screenWidth * 3 / 4, (float)screenHeight / 2 },0);
 }
 
 Game::~Game() {
@@ -23,15 +23,19 @@ void Game::Input() {
 }
 
 void Game::Update() {
+	whiteBall->Update();
 }
 
 void Game::Draw() {
+
 	BeginDrawing();
 	ClearBackground(DARKGREEN);
+
 	for (int i = 0; i < holes.size(); i++) {
 		holes[i]->Draw();
 	}
-	player->Draw();
+
+	whiteBall->Draw();
 	EndDrawing();
 }
 
