@@ -1,4 +1,5 @@
 #include "WhiteBall.h"
+#include <math.h>
 
 WhiteBall::WhiteBall(int radius, Color color, Vector2 position, float force) {
 	this->radius = radius;
@@ -6,8 +7,13 @@ WhiteBall::WhiteBall(int radius, Color color, Vector2 position, float force) {
 	this->position = position;
 	this->force = force;
 
-	velX = 200;
-	velY = 200;
+	mass = 156;
+	acceleration = { 0,0 };
+	velocity = { 200,200 };
+	MU = 0.005f; //coeficiente de friccion estatica
+	NU = 1.51f; //viscosidad del aire	
+	norma_V = 0;
+	N = mass * gravity;
 }
 
 WhiteBall::~WhiteBall() {
@@ -31,29 +37,19 @@ void WhiteBall::ForceToSpeed(float force) {
 
 void WhiteBall::Movement()
 {
-	position.x += velX * GetFrameTime();
-	position.y += velY * GetFrameTime();
+	//position.x += velX * GetFrameTime();
+	//position.y += velY * GetFrameTime();
+	
+	norma_V = pow((pow(velocity.x, 2) + pow(velocity.y, 2)), 1 / 2);
 
-	/*
-	Ffrict:=(-1)*ff*ms*grv; # Force of friction
-	p:=m*v; # Momentum
-	KE:=(m*v^2)/2; # Kinetic Energy
-	angl:=evalf(ang);
-	if ((0<angl) and (angl<=evalf(Pi)))
-	{
-	v1int:=-v1i;
-	}
-	distance:=(dist+(2*rad));
-	acc:=ff*grv; # Acceleration of the cue ball
+	acceleration.x = N * MU * (velocity.x / norma_V) - NU * velocity.x;
+	acceleration.y = N * MU * (velocity.y / norma_V) - NU * velocity.y;
 
-	elif (angl<=evalf(2*Pi)) then
-	v1int:=v1i;
-	distance:=(-1)*(dist+(2*rad));
-	acc:=(-1)*ff*grv;
-	end if;
+	position.x += velocity.x * GetFrameTime();
+	position.y += velocity.y * GetFrameTime();
 
-	*/
-
+	velocity.x += acceleration.x * GetFrameTime();
+	velocity.y += acceleration.y * GetFrameTime();
 }
 
 //formula de aerodinamica PI * diametro / 4

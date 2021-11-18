@@ -5,12 +5,23 @@ class WhiteBall {
 private:
 	int radius;
 	Color color;
-	Vector2 position;
 	float force;
-	float velX;
-	float velY;
 	float gravity;
-	float acceleration;
+	float mass;
+
+	Vector2 position;
+	Vector2 velocity;
+	Vector2 acceleration;
+
+	float MU = 0.005f; //coeficiente de friccion estatica
+	float NU = 1.51f; //viscosidad del aire	
+	float norma_V = 0;	
+	float N = 0;
+
+	//LINK EPICARDO
+	//https://es.khanacademy.org/computing/computer-programming/programming-natural-simulations/programming-forces/a/air-and-fluid-resistance
+
+
 public:
 	WhiteBall(int radius, Color color, Vector2 position, float force);
 	~WhiteBall();
